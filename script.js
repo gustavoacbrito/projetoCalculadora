@@ -216,14 +216,10 @@ function resultToExpo(){
     let dotPos = resultValue.indexOf(".");
     let ePos = resultValue.indexOf("e");
     let numBeforeDot = dotPos == -1 ? resultValue.length : dotPos;
-    if (numBeforeDot>=14 && ePos == -1){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toExponential(3);
-    }else if (ePos > 5){
+    if (numBeforeDot>=14 || ePos > 5){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toExponential(3);
     }
-
 }
 
 //-----------------------------------------------
