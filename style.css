@@ -4,8 +4,13 @@
     padding: 0;
 }
 
+
 .calc_container{
     background-color: rgb(255, 255, 255);
+    max-width: 414px;
+    height: fit-content;
+    margin: 0 auto;
+    
 
 }
 
