@@ -10,13 +10,13 @@ btnsombra.forEach((calc_buttons) => {
 });
 
 function buttonDown() {
-    this.style.boxShadow = "inset 5px 5px 10px #bebebe,inset -5px -5px 10px #ffffff"; //inserir esses estilos em uma classe e inserir no elemento! retirar css do JS
-    this.style.border = "solid 4px white"; //inserir esses estilos em uma classe e inserir no elemento! retirar css do JS
+    this.classList.add('calc_buttons-efect')
+    
 }
 
 function buttonUp() {
-    this.style.boxShadow = "";
-    this.style.border = "";
+    this.classList.remove('calc_buttons-efect')
+    
 }
 
 //-----------------------------------------------
@@ -73,8 +73,7 @@ function getFirtValue(clickedNumber){
     
     firstValue += clickedNumber;
     result.innerHTML = firstValue;
-    
-    
+      
     console.log('o primeiro valor digitado foi '+firstValue);
 }
 

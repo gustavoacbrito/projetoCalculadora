@@ -49,6 +49,11 @@
     
 }
 
+.calc_buttons-efect{
+    box-shadow: inset 5px 5px 10px #bebebe,inset -5px -5px 10px #ffffff;
+    border: solid 4px white;
+}
+
 .btn-op-color{
     color: orange;
     font-size: 2em;
