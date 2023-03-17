@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.calc_container{
+    background-color: rgb(255, 255, 255);
+
+}
+
+
+
+.results{
+    height: 30vh;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 3em;
+}
+
+
+.buttons_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 70vh;
+    align-items: center;
+    padding: 6px;
+    margin: 0 auto;
+
+}
+.calc_buttons{
+    
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border:none;
+    justify-self: center;
+    font-size: 1.5em;
+    background-color: white;
+    box-shadow: 5px 5px 10px #bebebed5,-5px -5px 20px #d3d3d3cc;
+    
+}
+
+.btn-op-color{
+    color: orange;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+.number-zero{
+   grid-column: span 2;
+   width: 160px;
+   border-radius: 400px;
+   
+   
+    
+}
