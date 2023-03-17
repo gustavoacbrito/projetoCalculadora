@@ -6,10 +6,10 @@
 
 
 .calc_container{
+    
     background-color: rgb(255, 255, 255);
     max-width: 414px;
-    height: fit-content;
-    margin: 0 auto;
+    margin: 20px auto;
     
 
 }
@@ -17,7 +17,7 @@
 
 
 .results{
-    height: 30vh;
+    height: 25vh;
     padding: 15px;
     display: flex;
     justify-content: flex-end;
@@ -29,7 +29,7 @@
 .buttons_container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    height: 70vh;
+    height: 60vh;
     align-items: center;
     padding: 6px;
     margin: 0 auto;
@@ -37,8 +37,8 @@
 }
 .calc_buttons{
     
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border:none;
     justify-self: center;
