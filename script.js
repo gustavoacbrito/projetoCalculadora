@@ -153,7 +153,8 @@ function doMath(){
             handleMultipication();
             break;
     }
-    
+    resultApproximate();
+    resultToExpo();
 }
 
 function handleSum(){
@@ -163,6 +164,7 @@ function handleSum(){
     firstValue = resultValue;
     secondValue = '';
     sign = '';
+    
 }
 function handleSubtraction(){
     result.innerHTML = '';
@@ -188,6 +190,7 @@ function handleDivision(){
         firstValue = resultValue;
         secondValue = '';
         sign = '';
+        
     }
 }
 function handleMultipication(){
@@ -199,8 +202,29 @@ function handleMultipication(){
     sign = '';
 }
 
+function resultApproximate(){
+    resultValue = JSON.stringify(resultValue); //tive que pesquisar essa linha...
+    if(resultValue.length>8){
+    resultValue = JSON.parse(resultValue); //outra linha que tive que pesquisar
+    result.innerHTML = resultValue.toFixed(5);
+    }
+}
 
+// converte resultado pra exponencial.. demorei mas consegui kk
+function resultToExpo(){
+    resultValue = resultValue.toString();
+    let dotPos = resultValue.indexOf(".");
+    let ePos = resultValue.indexOf("e");
+    let numBeforeDot = dotPos == -1 ? resultValue.length : dotPos;
+    if (numBeforeDot>=14 && ePos == -1){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toExponential(3);
+    }else if (ePos > 5){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toExponential(3);
+    }
 
+}
 
 //-----------------------------------------------
 
