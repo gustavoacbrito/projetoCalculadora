@@ -7,6 +7,8 @@ btnsombra.forEach((calc_buttons) => {
     calc_buttons.addEventListener("touchstart", buttonDown);
     calc_buttons.addEventListener("mouseup", buttonUp);
     calc_buttons.addEventListener("touchend", buttonUp);
+    
+    
 });
 
 function buttonDown() {
@@ -19,6 +21,18 @@ function buttonUp() {
     
 }
 
+/*const calcContainer = document.querySelector('.calc_container')
+const darkModeSwitch = document.querySelector('#input-dark-mode');
+darkModeSwitch.addEventListener('click', darkMode)
+function darkMode(){
+    calcContainer.classList.toggle('darkMode');
+    for(let pos in btnsombra){
+        btnsombra[pos].classList.toggle('calc_buttons-darkMode')
+    }    
+}
+*/
+
+   
 //-----------------------------------------------
 
 //Código de inputs
@@ -161,6 +175,7 @@ function handleSum(){
     resultValue = Number.parseFloat(firstValue) + Number.parseFloat(secondValue);
     result.innerHTML = resultValue;
     firstValue = resultValue;
+    isFirstValue = false;
     secondValue = '';
     sign = '';
     
@@ -172,6 +187,7 @@ function handleSubtraction(){
     firstValue = resultValue;
     secondValue = '';
     sign = '';
+    isFirstValue = false;
 
 }
 function handleDivision(){
@@ -189,6 +205,7 @@ function handleDivision(){
         firstValue = resultValue;
         secondValue = '';
         sign = '';
+        isFirstValue = false;
         
     }
 }
@@ -199,6 +216,7 @@ function handleMultipication(){
     firstValue = resultValue;
     secondValue = '';
     sign = '';
+    isFirstValue = false;
 }
 
 function resultApproximate(){
