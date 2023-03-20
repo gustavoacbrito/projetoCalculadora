@@ -167,7 +167,6 @@ function doMath(){
             break;
     }
     resultApproximate();
-    resultToExpo();
 }
 
 function handleSum(){
@@ -218,29 +217,57 @@ function handleMultipication(){
     sign = '';
     isFirstValue = false;
 }
-
 function resultApproximate(){
-    resultValue = JSON.stringify(resultValue); //tive que pesquisar essa linha...
-    if(resultValue.length>8){
-    resultValue = JSON.parse(resultValue); //outra linha que tive que pesquisar
-    result.innerHTML = resultValue.toFixed(5);
-    }
-}
-
-// converte resultado pra exponencial.. demorei mas consegui kk
-function resultToExpo(){
     resultValue = resultValue.toString();
     let dotPos = resultValue.indexOf(".");
-    let ePos = resultValue.indexOf("e");
     let numBeforeDot = dotPos == -1 ? resultValue.length : dotPos;
-    if (numBeforeDot>=10 || ePos > 5){
+    let numAfterDot = dotPos == -1 ? resultValue.length : (Number(resultValue.length) - (dotPos+1));
+    console.log('before '+ numBeforeDot);
+    console.log('after '+ numAfterDot);
+
+    if((resultValue.length>9 && dotPos == -1) || (numBeforeDot>9 && dotPos != -1)){
         resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toExponential(3);
+        result.innerHTML = resultValue.toExponential(8);
+        return;
+    }if(numBeforeDot<=1 && numAfterDot>8 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(8);
+        return;
+    }if(numBeforeDot<=2 && numAfterDot>7 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+         result.innerHTML = resultValue.toFixed(7);
+         return;
+    }if(numBeforeDot<=3 && numAfterDot>6 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+         result.innerHTML = resultValue.toFixed(6);
+         return;
+    }if(numBeforeDot=4 && numAfterDot>5 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(5);
+        return;
+    }if(numBeforeDot<=5 && numAfterDot>4 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(4);
+        return;
+    }if(numBeforeDot<=6 && numAfterDot>3 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(3);
+        return;
+    }if(numBeforeDot<=7 && numAfterDot>2 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(2);
+        return;
+    }if(numBeforeDot<=8 && numAfterDot>1 && numBeforeDot!=resultValue.length){
+        resultValue = Number.parseFloat(resultValue);
+        result.innerHTML = resultValue.toFixed(1);
+        return;
     }
+    
 }
 
+
+
+
+
+    
 //-----------------------------------------------
-
-
-
-
