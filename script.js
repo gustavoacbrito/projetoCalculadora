@@ -241,7 +241,7 @@ function resultApproximate(){
         resultValue = Number.parseFloat(resultValue);
          result.innerHTML = resultValue.toFixed(6);
          return;
-    }if(numBeforeDot=4 && numAfterDot>5 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot<=4 && numAfterDot>5 && numBeforeDot!=resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(5);
         return;
