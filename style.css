@@ -18,21 +18,24 @@
     
     height: 100vh;
     max-width: 430px;
-    padding-top: 30px;
-    padding-bottom: 35px;
-    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 
 
 .results{
-    height: 20vh;
+    height: 10vh;
     padding: 15px;
     display: flex;
-    justify-self: flex-end;
+    justify-content:flex-end;
     align-items: end;
     font-size: 2.5em;
-    flex-direction: column;
+    
 }
 
 
@@ -41,7 +44,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     height: 70vh;
     align-items: center;
-    padding: 6px;
+    padding-bottom: 20px;
     margin: 0 auto;
 
 }
