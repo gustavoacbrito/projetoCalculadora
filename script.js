@@ -38,7 +38,6 @@ function darkMode(){
 //Código de inputs
 const numbers = document.querySelectorAll('.number');
 const result = document.querySelector('.results span');
-const message = document.querySelector('.message');
 const equals = document.querySelector('.equals');
 const dot = document.querySelector('.dot');
 const percent = document.querySelector('.percent');
@@ -53,9 +52,9 @@ let sign = "";
 let resultValue = 0;
 
 // Atribuição de Event Listeners --------------------
-negative.addEventListener('click', handleNegative);
+negative.addEventListener('click', handleNegative); //botão negativo/positivo
 
-percent.addEventListener('click',handlePercent);
+percent.addEventListener('click',handlePercent); //botão porcentagem
 
 clear.addEventListener('click',clearResults); //botão limpar
 
@@ -84,8 +83,8 @@ function handleTypedNumber(event){  //função que captura o valor dos botões n
         
     }
 }
-function getFirtValue(clickedNumber){
-   if(firstValue.length<10){
+function getFirtValue(clickedNumber){  
+   if(firstValue.length<10){     //limita o input em 10 caracteres
     firstValue += clickedNumber;
     result.innerHTML = firstValue;
 } 
@@ -100,14 +99,14 @@ function getMathSign(clickedSign){
 }
 
 function getSecondValue(clickedNumber){
-   if (secondValue.length<10){
+   if (secondValue.length<10){   //limita o input em 10 caracteres
     secondValue += clickedNumber;
     result.innerHTML = secondValue;
     console.log('o segundo valor digitado foi ' +secondValue);
 }
 }
 
-function clearResults(){
+function clearResults(){   //botão clear, limpa os resultados
     result.innerHTML = '0';
     firstValue = '' ;
     isFirstValue = false;
@@ -153,7 +152,7 @@ function handleNegative(){
     
 }
 
-function doMath(){
+function doMath(){       //switch ultilizado para chamar as funções relativas a cada operação de acordo com o sinal digitado
     switch(sign){
         case '+':
             handleSum();
@@ -231,39 +230,18 @@ function resultApproximate(){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML= resultValue.toExponential(6);
         return;
-    }if(numBeforeDot == 1 && numAfterDot>8 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(8);
-        return;
-    }if(numBeforeDot == 2 && numAfterDot>7 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-         result.innerHTML = resultValue.toFixed(7);
-         return;
-    }if(numBeforeDot == 3 && numAfterDot>6 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-         result.innerHTML = resultValue.toFixed(6);
-         return;
-    }if(numBeforeDot == 4 && numAfterDot>5 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(5);
-        return;
-    }if(numBeforeDot == 5 && numAfterDot>4 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(4);
-        return;
-    }if(numBeforeDot == 6 && numAfterDot>3 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(3);
-        return;
-    }if(numBeforeDot == 7 && numAfterDot>2 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(2);
-        return;
-    }if(numBeforeDot == 8 && numAfterDot>1 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
-        resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toFixed(1);
-        return;
-    
+    }
+
+    let numBeforeDotLimit = [1, 2, 3, 4, 5, 6, 7, 8];
+    let numAfterDotLimit = [8, 7, 6, 5, 4, 3, 2, 1];
+
+    for (let i = 0; i < numBeforeDotLimit.length; i++) {//verifica quantos números tem antes e depois do ponto e faz as aproximações necessárias de acordo com o tamanho máximo de caracteres.
+        if (numBeforeDot == numBeforeDotLimit[i] && numAfterDot > numAfterDotLimit[i] && 
+            numBeforeDot != resultValue.length && numAfterDot != resultValue.length) {
+            resultValue = Number.parseFloat(resultValue);
+            result.innerHTML = resultValue.toFixed(numAfterDotLimit[i]);
+            return;
+        }
     }
 }
 
