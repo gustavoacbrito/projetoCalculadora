@@ -38,6 +38,7 @@ function darkMode(){
 //Código de inputs
 const numbers = document.querySelectorAll('.number');
 const result = document.querySelector('.results span');
+const message = document.querySelector('.message');
 const equals = document.querySelector('.equals');
 const dot = document.querySelector('.dot');
 const percent = document.querySelector('.percent');
@@ -84,10 +85,10 @@ function handleTypedNumber(event){  //função que captura o valor dos botões n
     }
 }
 function getFirtValue(clickedNumber){
-    
+   if(firstValue.length<10){
     firstValue += clickedNumber;
     result.innerHTML = firstValue;
-      
+} 
     console.log('o primeiro valor digitado foi '+firstValue);
 }
 
@@ -95,14 +96,15 @@ function getMathSign(clickedSign){
     
     sign = clickedSign.target.getAttribute('value');
     isFirstValue = true;
-     
+    
 }
 
 function getSecondValue(clickedNumber){
-    
+   if (secondValue.length<10){
     secondValue += clickedNumber;
     result.innerHTML = secondValue;
     console.log('o segundo valor digitado foi ' +secondValue);
+}
 }
 
 function clearResults(){
@@ -227,44 +229,43 @@ function resultApproximate(){
 
     if((resultValue.length>9 && dotPos == -1) || (numBeforeDot>9 && dotPos != -1)){
         resultValue = Number.parseFloat(resultValue);
-        result.innerHTML = resultValue.toExponential(8);
+        result.innerHTML= resultValue.toExponential(6);
         return;
-    }if(numBeforeDot<=1 && numAfterDot>8 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 1 && numAfterDot>8 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(8);
         return;
-    }if(numBeforeDot<=2 && numAfterDot>7 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 2 && numAfterDot>7 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
          result.innerHTML = resultValue.toFixed(7);
          return;
-    }if(numBeforeDot<=3 && numAfterDot>6 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 3 && numAfterDot>6 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
          result.innerHTML = resultValue.toFixed(6);
          return;
-    }if(numBeforeDot<=4 && numAfterDot>5 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 4 && numAfterDot>5 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(5);
         return;
-    }if(numBeforeDot<=5 && numAfterDot>4 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 5 && numAfterDot>4 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(4);
         return;
-    }if(numBeforeDot<=6 && numAfterDot>3 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 6 && numAfterDot>3 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(3);
         return;
-    }if(numBeforeDot<=7 && numAfterDot>2 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 7 && numAfterDot>2 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(2);
         return;
-    }if(numBeforeDot<=8 && numAfterDot>1 && numBeforeDot!=resultValue.length){
+    }if(numBeforeDot == 8 && numAfterDot>1 && numBeforeDot!=resultValue.length && numAfterDot != resultValue.length){
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML = resultValue.toFixed(1);
         return;
-    }
     
+    }
 }
-
 
 
 

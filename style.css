@@ -22,13 +22,19 @@
     margin: 0 auto;
 
 }
+.results p{
+font-size: 0.5em;
+
+
+}
 .results{
     height: 20vh;
     padding: 15px;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    font-size: 3em;
+    justify-self: flex-end;
+    align-items: end;
+    font-size: 2.5em;
+    flex-direction: column;
 }
 
 
