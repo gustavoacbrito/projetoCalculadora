@@ -16,7 +16,7 @@
 
 .calc_container{
     
-    height: 100vh;
+    height: 90vh;
     max-width: 430px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -45,7 +45,7 @@
     height: 70vh;
     align-items: center;
     padding-bottom: 20px;
-    margin: 0 auto;
+    
 
 }
 
