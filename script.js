@@ -94,7 +94,7 @@ function getFirtValue(clickedNumber){
 function getMathSign(clickedSign){
     
     sign = clickedSign.target.getAttribute('value');//clickedSign.target busca o atributo value do dono do evento de click. Aquele que sofreu a ação
-    isFirstValue = true;                            //clickedSign.target faz o mesmo papel do this                           
+    isFirstValue = true;                            //clickedSign.target faz o mesmo papel do this nesse contexto                          
     
 }
 
