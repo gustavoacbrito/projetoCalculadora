@@ -12,7 +12,7 @@ btnsombra.forEach((calc_buttons) => {
 });
 
 function buttonDown() {
-    this.classList.add('calc_buttons-efect')
+    this.classList.add('calc_buttons-efect')//this adiciona a classe ao dono do evento de click
     
 }
 
@@ -74,7 +74,7 @@ signs.forEach((clickedSign)=>{
 
 function handleTypedNumber(event){  //função que captura o valor dos botões numericos
 
-    let clickedNumber = event.target.getAttribute('value');
+    let clickedNumber = this.getAttribute('value'); //this busca o atributo value do dono do evento de click. Aquele que sofreu a ação
     if(isFirstValue == false){
         getFirtValue(clickedNumber);
         
@@ -93,8 +93,8 @@ function getFirtValue(clickedNumber){
 
 function getMathSign(clickedSign){
     
-    sign = clickedSign.target.getAttribute('value');
-    isFirstValue = true;
+    sign = clickedSign.target.getAttribute('value');//clickedSign.target busca o atributo value do dono do evento de click. Aquele que sofreu a ação
+    isFirstValue = true;                            //clickedSign.target faz o mesmo papel do this                           
     
 }
 
