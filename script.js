@@ -7,32 +7,16 @@ btnsombra.forEach((calc_buttons) => {
     calc_buttons.addEventListener("touchstart", buttonDown);
     calc_buttons.addEventListener("mouseup", buttonUp);
     calc_buttons.addEventListener("touchend", buttonUp);
-    
-    
 });
 
 function buttonDown() {
     this.classList.add('calc_buttons-efect')//this adiciona a classe ao dono do evento de click
-    
 }
 
 function buttonUp() {
     this.classList.remove('calc_buttons-efect')
-    
 }
 
-/*const calcContainer = document.querySelector('.calc_container')
-const darkModeSwitch = document.querySelector('#input-dark-mode');
-darkModeSwitch.addEventListener('click', darkMode)
-function darkMode(){
-    calcContainer.classList.toggle('darkMode');
-    for(let pos in btnsombra){
-        btnsombra[pos].classList.toggle('calc_buttons-darkMode')
-    }    
-}
-*/
-
-   
 //-----------------------------------------------
 
 //Código de inputs
@@ -52,12 +36,10 @@ let sign = "";
 let resultValue = 0;
 
 // Atribuição de Event Listeners --------------------
+
 negative.addEventListener('click', handleNegative); //botão negativo/positivo
-
 percent.addEventListener('click',handlePercent); //botão porcentagem
-
 clear.addEventListener('click',clearResults); //botão limpar
-
 equals.addEventListener('click', doMath); //botão igual à
 
 numbers.forEach((clickedNumber)=>{
@@ -73,40 +55,37 @@ signs.forEach((clickedSign)=>{
 // Funções de armazenagem de valores digitados------
 
 function handleTypedNumber(event){  //função que captura o valor dos botões numericos
-
     let clickedNumber = this.getAttribute('value'); //this busca o atributo value do dono do evento de click. Aquele que sofreu a ação
-    if(isFirstValue == false){
+    if (isFirstValue == false) {
         getFirtValue(clickedNumber);
-        
-    }else{
+    }else {
         getSecondValue(clickedNumber);
-        
     }
 }
+
 function getFirtValue(clickedNumber){  
-   if(firstValue.length<10){     //limita o input em 10 caracteres
-    firstValue += clickedNumber;
-    result.innerHTML = firstValue;
-} 
+    if (firstValue.length<10) {     //limita o input em 10 caracteres
+        firstValue += clickedNumber;
+        result.innerHTML = firstValue;
+    }
     console.log('o primeiro valor digitado foi '+firstValue);
 }
 
 function getMathSign(clickedSign){
-    
     sign = clickedSign.target.getAttribute('value');//clickedSign.target busca o atributo value do dono do evento de click. Aquele que sofreu a ação
     isFirstValue = true;                            //clickedSign.target faz o mesmo papel do this nesse contexto                          
     
 }
 
-function getSecondValue(clickedNumber){
-   if (secondValue.length<10){   //limita o input em 10 caracteres
-    secondValue += clickedNumber;
-    result.innerHTML = secondValue;
-    console.log('o segundo valor digitado foi ' +secondValue);
-}
+function getSecondValue(clickedNumber) {
+    if (secondValue.length<10){   //limita o input em 10 caracteres
+        secondValue += clickedNumber;
+        result.innerHTML = secondValue;
+        console.log('o segundo valor digitado foi ' +secondValue);
+    }
 }
 
-function clearResults(){   //botão clear, limpa os resultados
+function clearResults() {   //botão clear, limpa os resultados
     result.innerHTML = '0';
     firstValue = '' ;
     isFirstValue = false;
@@ -117,43 +96,41 @@ function clearResults(){   //botão clear, limpa os resultados
 
 //-----------------------------------------------
 //Código de cálculos
-function handlePercent(){
+function handlePercent() {
     let percentValue;
 
-    if(firstValue != '' && isFirstValue == false && sign == ""){
+    if (firstValue != '' && isFirstValue == false && sign == "") {
         percentValue = firstValue/100;
         firstValue = percentValue;
         result.innerHTML = percentValue;
-    }else if(isFirstValue == true && secondValue !="" && sign != ""){
+    } else if (isFirstValue == true && secondValue !="" && sign != "") {
         percentValue = secondValue/100;
         secondValue = percentValue;
         console.log('aqui o secondValue '+secondValue);
         result.innerHTML = percentValue;
         
-    }else{
+    } else {
         result.innerHTML = "Error";
     }
-    
 }
 
-function handleNegative(){
+function handleNegative() {
     let negativeValue;
-    if(firstValue != '' && isFirstValue == false && sign == ""){
+    if (firstValue != '' && isFirstValue == false && sign == "") {
         negativeValue = firstValue*(-1);
         firstValue = negativeValue;
         result.innerHTML = negativeValue;
-    }else if(isFirstValue == true && secondValue !="" && sign != ""){
+    } else if (isFirstValue == true && secondValue !="" && sign != "") {
         negativeValue = secondValue*(-1);
         secondValue = negativeValue;
         result.innerHTML = negativeValue;
-    }else{
+    } else{
         result.innerHTML = "Error";
     }
-    
 }
 
-function doMath(){       //switch ultilizado para chamar as funções relativas a cada operação de acordo com o sinal digitado
-    switch(sign){
+function doMath() {       //switch ultilizado para chamar as funções relativas a cada operação de acordo com o sinal digitado
+    switch (sign) {
         case '+':
             handleSum();
             break;
@@ -190,15 +167,15 @@ function handleSubtraction(){
     isFirstValue = false;
 
 }
-function handleDivision(){
-    if(secondValue==0){
+function handleDivision() {
+    if (secondValue==0) {
         result.innerHTML = 'Math Error';
         firstValue = '' ;
         isFirstValue = false;
         secondValue = '' ;
         sign = "";
         return;
-    }else{
+    } else {
         result.innerHTML = '';
         resultValue = Number.parseFloat(firstValue) / Number.parseFloat(secondValue);
         result.innerHTML = resultValue;
@@ -226,7 +203,7 @@ function resultApproximate(){
     console.log('before '+ numBeforeDot);
     console.log('after '+ numAfterDot);
 
-    if((resultValue.length>9 && dotPos == -1) || (numBeforeDot>9 && dotPos != -1)){
+    if ((resultValue.length>9 && dotPos == -1) || (numBeforeDot>9 && dotPos != -1)) {
         resultValue = Number.parseFloat(resultValue);
         result.innerHTML= resultValue.toExponential(6);
         return;
@@ -244,9 +221,4 @@ function resultApproximate(){
         }
     }
 }
-
-
-
-
-    
 //-----------------------------------------------
